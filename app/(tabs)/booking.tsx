@@ -6,11 +6,14 @@ import {
   TextInput,
   ScrollView,
   TouchableOpacity,
+  Image,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { Picker } from "@react-native-picker/picker";
 import { useLocalSearchParams } from "expo-router";
+import * as ImagePicker from "expo-image-picker";
+import { Ionicons } from "@expo/vector-icons";
 
 const services = [
   { id: 1, name: "Complete Vehicle Maintenance" },
@@ -52,6 +55,25 @@ export default function BookingScreen() {
     if (date) {
       setSelectedDate(date);
     }
+  };
+
+  const [images, setImages] = useState<string[]>([]);
+
+  const pickImage = async () => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: undefined,
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      setImages([...images, result.assets[0].uri]);
+    }
+  };
+
+  const removeImage = (index: number) => {
+    setImages(images.filter((_, i) => i !== index));
   };
 
   return (
@@ -102,6 +124,31 @@ export default function BookingScreen() {
             placeholder="e.g., MH02AB1234"
             autoCapitalize="characters"
           />
+
+          <Text style={styles.label}>Upload Car Images (Optional)</Text>
+          <View style={styles.imageSection}>
+            <TouchableOpacity
+              style={styles.imagePickerButton}
+              onPress={pickImage}
+            >
+              <Ionicons name="camera" size={24} color="#C0A062" />
+              <Text style={styles.imagePickerText}>Add Photos</Text>
+            </TouchableOpacity>
+
+            <ScrollView horizontal style={styles.imagePreviewScroll}>
+              {images.map((uri, index) => (
+                <View key={index} style={styles.imagePreviewContainer}>
+                  <Image source={{ uri }} style={styles.imagePreview} />
+                  <TouchableOpacity
+                    style={styles.removeImageButton}
+                    onPress={() => removeImage(index)}
+                  >
+                    <Ionicons name="close-circle" size={24} color="#FF0000" />
+                  </TouchableOpacity>
+                </View>
+              ))}
+            </ScrollView>
+          </View>
 
           <Text style={styles.label}>Contact Number</Text>
           <TextInput
@@ -246,5 +293,48 @@ const styles = StyleSheet.create({
     color: "#D32F2F",
     fontSize: 14,
     marginTop: 5,
+  },
+  imageSection: {
+    marginBottom: 20,
+  },
+  imagePickerButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 15,
+    backgroundColor: "#FFFFFF",
+    borderWidth: 2,
+    borderStyle: "dashed",
+    borderColor: "#C0A062",
+    borderRadius: 10,
+    marginBottom: 10,
+  },
+  imagePickerText: {
+    marginLeft: 10,
+    fontSize: 16,
+    color: "#C0A062",
+    fontWeight: "500",
+  },
+  imagePreviewScroll: {
+    flexDirection: "row",
+    marginTop: 10,
+  },
+  imagePreviewContainer: {
+    marginRight: 10,
+    position: "relative",
+  },
+  imagePreview: {
+    width: 100,
+    height: 100,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: "#C0A062",
+  },
+  removeImageButton: {
+    position: "absolute",
+    top: -10,
+    right: -10,
+    backgroundColor: "#FFFFFF",
+    borderRadius: 12,
   },
 });
