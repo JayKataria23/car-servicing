@@ -7,22 +7,34 @@ import { useUser } from '@clerk/clerk-expo';
 const services = [
   {
     id: 1,
-    name: 'Basic Service',
-    description: 'Oil change, filter replacement, and basic inspection',
-    price: '$99',
+    name: 'Complete Vehicle Maintenance',
+    description: 'Full inspection and maintenance of your vehicle',
+    price: 'Contact for price',
   },
   {
     id: 2,
-    name: 'Full Service',
-    description: 'Comprehensive car check-up and maintenance',
-    price: '$199',
+    name: 'Oil Changing & Coolant Changing',
+    description: 'Essential fluid maintenance service',
+    price: 'Contact for price',
   },
   {
     id: 3,
-    name: 'Premium Service',
-    description: 'Complete car service with detailed inspection',
-    price: '$299',
+    name: 'Servicing of Vehicles',
+    description: 'Regular maintenance and servicing',
+    price: 'Contact for price',
   },
+  {
+    id: 4,
+    name: 'PUC/Petrol',
+    description: 'Pollution check and fuel services',
+    price: 'Contact for price',
+  },
+  {
+    id: 5,
+    name: 'Interior & Exterior Polishing',
+    description: 'Complete car detailing service',
+    price: 'Contact for price',
+  }
 ];
 
 export default function HomeScreen() {
