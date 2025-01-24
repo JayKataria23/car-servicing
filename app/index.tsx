@@ -2,6 +2,7 @@ import { SignedIn, SignedOut, useUser } from "@clerk/clerk-expo";
 import { Link, Redirect } from "expo-router";
 import { Text, View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Image } from "react-native";
 
 export default function Page() {
   return (
@@ -11,7 +12,8 @@ export default function Page() {
       </SignedIn>
       <SignedOut>
         <View style={styles.content}>
-          <Text style={styles.title}>Welcome to Car Service</Text>
+          <Text style={styles.companyName}>MOTORBAY AUTO SOLUTIONS</Text>
+          <Text style={styles.subtitle}>Premium Car Service</Text>
           <View style={styles.buttonContainer}>
             <Link href="/(auth)/sign-in" style={styles.button}>
               <Text style={styles.buttonText}>Sign in</Text>
@@ -29,32 +31,48 @@ export default function Page() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#FFFFFF",
   },
   content: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     padding: 20,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 30,
+  companyName: {
+    fontSize: 28,
+    fontWeight: "bold",
+    color: "#C0A062",
+    textAlign: "center",
+    marginBottom: 10,
+  },
+  subtitle: {
+    fontSize: 18,
+    color: "#757575",
+    marginBottom: 40,
+    textAlign: "center",
   },
   buttonContainer: {
-    width: '100%',
+    width: "100%",
     gap: 15,
   },
   button: {
-    backgroundColor: '#2196F3',
+    backgroundColor: "#C0A062",
     padding: 15,
-    borderRadius: 5,
-    alignItems: 'center',
+    borderRadius: 8,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   buttonText: {
-    color: '#fff',
+    color: "#FFFFFF",
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
 });

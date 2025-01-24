@@ -101,7 +101,7 @@ export default function SignUpScreen() {
                   name="key-outline"
                   size={20}
                   color="#666"
-                  style={styles.inputIcon}
+                  style={{ marginRight: 10 }}
                 />
                 <TextInput
                   style={styles.input}
@@ -114,11 +114,8 @@ export default function SignUpScreen() {
                 />
               </View>
 
-              <TouchableOpacity
-                style={styles.verifyButton}
-                onPress={onVerifyPress}
-              >
-                <Text style={styles.verifyButtonText}>Verify</Text>
+              <TouchableOpacity style={styles.button} onPress={onVerifyPress}>
+                <Text style={styles.buttonText}>Verify</Text>
               </TouchableOpacity>
             </View>
           </ScrollView>
@@ -148,7 +145,7 @@ export default function SignUpScreen() {
                 name="person-outline"
                 size={20}
                 color="#666"
-                style={styles.inputIcon}
+                style={{ marginRight: 10 }}
               />
               <TextInput
                 style={styles.input}
@@ -165,7 +162,7 @@ export default function SignUpScreen() {
                 name="mail-outline"
                 size={20}
                 color="#666"
-                style={styles.inputIcon}
+                style={{ marginRight: 10 }}
               />
               <TextInput
                 style={styles.input}
@@ -183,7 +180,7 @@ export default function SignUpScreen() {
                 name="lock-closed-outline"
                 size={20}
                 color="#666"
-                style={styles.inputIcon}
+                style={{ marginRight: 10 }}
               />
               <TextInput
                 style={styles.input}
@@ -195,7 +192,7 @@ export default function SignUpScreen() {
               />
               <TouchableOpacity
                 onPress={() => setShowPassword(!showPassword)}
-                style={styles.showPasswordButton}
+                style={styles.togglePasswordButton}
               >
                 <Ionicons
                   name={showPassword ? "eye-off-outline" : "eye-outline"}
@@ -206,11 +203,11 @@ export default function SignUpScreen() {
             </View>
 
             <TouchableOpacity
-              style={styles.continueButton}
+              style={styles.button}
               onPress={onSignUpPress}
               disabled={!username || !emailAddress || !password}
             >
-              <Text style={styles.continueButtonText}>Continue</Text>
+              <Text style={styles.buttonText}>Continue</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
@@ -226,70 +223,125 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     flexGrow: 1,
+    padding: 24,
     justifyContent: "center",
   },
   header: {
-    alignItems: "center",
-    marginVertical: 40,
+    marginBottom: 36,
   },
   title: {
-    fontSize: 28,
+    fontSize: 32,
     fontWeight: "bold",
-    color: "#333",
-    marginBottom: 10,
+    color: "#424242",
+    marginBottom: 12,
+    textAlign: "center",
+    letterSpacing: 0.5,
   },
   subtitle: {
     fontSize: 16,
-    color: "#666",
+    color: "#757575",
+    textAlign: "center",
+    marginBottom: 24,
+    letterSpacing: 0.25,
   },
   formContainer: {
-    paddingHorizontal: 20,
+    backgroundColor: "#FFFFFF",
+    padding: 24,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: "#C0A062",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
   },
   inputContainer: {
+    marginBottom: 20,
     flexDirection: "row",
     alignItems: "center",
+    backgroundColor: "#F8F8F8",
+    borderRadius: 8,
     borderWidth: 1,
     borderColor: "#E0E0E0",
-    borderRadius: 10,
-    marginBottom: 15,
-    backgroundColor: "#F8F8F8",
-  },
-  inputIcon: {
-    paddingLeft: 15,
+    paddingHorizontal: 12,
   },
   input: {
     flex: 1,
-    height: 50,
-    paddingHorizontal: 15,
+    padding: 14,
     fontSize: 16,
-    color: "#333",
+    color: "#424242",
   },
-  showPasswordButton: {
-    paddingRight: 15,
-  },
-  continueButton: {
-    backgroundColor: "#2196F3",
-    height: 50,
-    borderRadius: 10,
-    justifyContent: "center",
-    alignItems: "center",
-    opacity: 0.6,
-  },
-  continueButtonText: {
-    color: "white",
-    fontSize: 18,
-    fontWeight: "bold",
-  },
-  verifyButton: {
-    backgroundColor: "#2196F3",
-    height: 50,
-    borderRadius: 10,
-    justifyContent: "center",
+  passwordContainer: {
+    flexDirection: "row",
     alignItems: "center",
   },
-  verifyButtonText: {
-    color: "white",
+  togglePasswordButton: {
+    padding: 8,
+  },
+  verificationContainer: {
+    alignItems: "center",
+    marginTop: 24,
+  },
+  codeInput: {
+    backgroundColor: "#F8F8F8",
+    borderWidth: 1,
+    borderColor: "#C0A062",
+    borderRadius: 8,
+    padding: 16,
+    fontSize: 20,
+    width: "60%",
+    textAlign: "center",
+    marginTop: 12,
+    letterSpacing: 4,
+  },
+  button: {
+    backgroundColor: "#C0A062",
+    padding: 16,
+    borderRadius: 8,
+    alignItems: "center",
+    marginTop: 24,
+    width: "100%",
+    shadowColor: "#C0A062",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 4,
+  },
+  buttonText: {
+    color: "#FFFFFF",
     fontSize: 18,
     fontWeight: "bold",
+    letterSpacing: 0.5,
+  },
+  signInContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    marginTop: 24,
+  },
+  signInText: {
+    color: "#757575",
+    fontSize: 15,
+  },
+  signInLink: {
+    marginLeft: 6,
+  },
+  signInLinkText: {
+    color: "#C0A062",
+    fontSize: 15,
+    fontWeight: "bold",
+  },
+  errorText: {
+    color: "#D32F2F",
+    fontSize: 14,
+    textAlign: "center",
+    marginTop: 12,
+    letterSpacing: 0.25,
   },
 });

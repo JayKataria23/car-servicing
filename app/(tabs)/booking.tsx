@@ -114,7 +114,7 @@ export default function BookingScreen() {
 
           <Text style={styles.label}>Description of Issue</Text>
           <TextInput
-            style={[styles.input, styles.textArea]}
+            style={[styles.input, { height: 100 }]}
             value={description}
             onChangeText={setDescription}
             placeholder="Describe any specific issues or requirements..."
@@ -164,7 +164,7 @@ export default function BookingScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#FFFFFF",
   },
   scrollView: {
     padding: 20,
@@ -172,55 +172,79 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: "bold",
+    color: "#424242",
     marginBottom: 20,
   },
   form: {
-    gap: 10,
+    backgroundColor: "#F5F5F5",
+    padding: 20,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: "#C0A062",
   },
   label: {
     fontSize: 16,
-    fontWeight: "600",
-    marginBottom: 5,
-    color: "#333",
+    color: "#424242",
+    marginBottom: 8,
+    fontWeight: "500",
   },
   input: {
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
-    borderColor: "#ddd",
-    borderRadius: 8,
+    borderColor: "#C0A062",
+    borderRadius: 5,
     padding: 12,
+    marginBottom: 16,
     fontSize: 16,
-    marginBottom: 15,
-  },
-  textArea: {
-    height: 100,
-    textAlignVertical: "top",
+    color: "#424242",
   },
   pickerContainer: {
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
-    borderColor: "#ddd",
-    borderRadius: 8,
-    marginBottom: 15,
+    borderColor: "#C0A062",
+    borderRadius: 5,
+    marginBottom: 16,
+    overflow: "hidden",
   },
   picker: {
     height: 50,
+    color: "#424242",
   },
   dateButton: {
+    backgroundColor: "#FFFFFF",
     borderWidth: 1,
-    borderColor: "#ddd",
-    borderRadius: 8,
+    borderColor: "#C0A062",
+    borderRadius: 5,
     padding: 12,
-    marginBottom: 15,
+    marginBottom: 16,
+  },
+  dateButtonText: {
+    fontSize: 16,
+    color: "#424242",
+  },
+  timePickerContainer: {
+    backgroundColor: "#FFFFFF",
+    borderWidth: 1,
+    borderColor: "#C0A062",
+    borderRadius: 5,
+    marginBottom: 16,
+    overflow: "hidden",
   },
   submitButton: {
-    backgroundColor: "#2196F3",
+    backgroundColor: "#C0A062",
     padding: 15,
-    borderRadius: 8,
+    borderRadius: 5,
     alignItems: "center",
     marginTop: 20,
   },
   submitButtonText: {
-    color: "#fff",
+    color: "#FFFFFF",
     fontSize: 18,
     fontWeight: "bold",
+  },
+  errorText: {
+    color: "#D32F2F",
+    fontSize: 14,
+    marginTop: 5,
   },
 });
